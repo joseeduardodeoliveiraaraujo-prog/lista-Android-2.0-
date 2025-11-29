@@ -25,7 +25,7 @@ public class TarefaDAO {
         this.context = context;
         this.dbHelper = new DBHelper(context);
     }
-
+    // teste
     // INSERIR - criar nova tarefa
     public long inserir(Tarefa t){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
