@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:padding="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Título -->
+        <TextView
+            android:id="@+id/txtTituloConfig"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Configurações"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#333333"
+            android:layout_marginBottom="20dp" />
+
+		<!-- Ordenação -->
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Ordenação da lista"
+			android:textSize="16sp"
+			android:textStyle="bold"
+			android:textColor="#333333"
+			android:layout_marginTop="4dp"
+			android:layout_marginBottom="6dp" />
+
+		<Spinner
+			android:id="@+id/spinnerOrdenacao"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content" />
+
+		<!-- Filtro por prioridade mínima -->
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Prioridade mínima"
+			android:textSize="16sp"
+			android:textStyle="bold"
+			android:textColor="#333333"
+			android:layout_marginTop="16dp"
+			android:layout_marginBottom="6dp" />
+
+		<Spinner
+			android:id="@+id/spinnerPrioridadeMinima"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content" />
+
+        <!-- Ocultar concluídas -->
+        <CheckBox
+            android:id="@+id/chkOcultarConcluidas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ocultar tarefas concluídas"
+            android:textSize="18sp"
+            android:textColor="#333333" />
+
+        <!-- Botão salvar -->
+        <Button
+            android:id="@+id/btnSalvarConfig"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Salvar"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:background="#4CAF50"
+            android:textColor="#FFFFFF"
+            android:padding="14dp"
+            android:layout_marginTop="35dp" />
+
+    </LinearLayout>
+
+</ScrollView>
