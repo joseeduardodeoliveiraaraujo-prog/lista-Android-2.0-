@@ -13,30 +13,31 @@ import com.example.projeto2.R;
 import com.example.projeto2.utils.Preferencias;
 
 /**
- * Activity de configurações gerais do aplicativo.
+ * ================================
+ * ConfiguracoesActivity
+ * ================================
  *
- * Funções implementadas:
- *   - Carregar preferências salvas (SharedPreferences)
- *   - Alterar a opção "Ocultar tarefas concluídas"
- *   - Salvar as configurações ao clicar no botão
+ * Esta Activity gerencia as configurações do aplicativo:
+ *   - Ocultar tarefas concluídas
+ *   - Ordenação da lista de tarefas
+ *   - Prioridade mínima a exibir
  *
- * Observações:
- *   - O recurso de ordenação foi removido conforme solicitado.
- *   - A Activity retorna para a MainActivity, que faz o recarregamento
- *     da lista automaticamente no onResume().
+ * As configurações são salvas usando SharedPreferences via classe Preferencias.
  */
 public class ConfiguracoesActivity extends AppCompatActivity {
 
     // ================================
     // Componentes da interface
     // ================================
-    private CheckBox chkOcultarConcluidas;
-    private Button btnSalvarConfig;
-	private Spinner spinnerOrdenacao;
-	private Spinner spinnerPrioridadeMinima;
+    private CheckBox chkOcultarConcluidas;       // Checkbox para ocultar tarefas concluídas
+    private Button btnSalvarConfig;              // Botão para salvar as configurações
+    private Spinner spinnerOrdenacao;            // Spinner para selecionar tipo de ordenação
+    private Spinner spinnerPrioridadeMinima;     // Spinner para selecionar prioridade mínima
 
+    // ================================
     // Classe de preferências (SharedPreferences)
-    private Preferencias prefs;
+    // ================================
+    private Preferencias prefs;                  // Gerencia leitura e gravação de preferências
 
     // ================================
     // Ciclo de vida — onCreate
@@ -44,49 +45,62 @@ public class ConfiguracoesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Define qual layout XML será usado por esta Activity
         setContentView(R.layout.activity_configuracoes);
 
-        // Inicializar controlador de preferências
+        // Inicializa a classe Preferencias (SharedPreferences)
         prefs = new Preferencias(this);
 
-        // Recuperar componentes da interface
+        // Recupera referências dos componentes de interface
         chkOcultarConcluidas = findViewById(R.id.chkOcultarConcluidas);
         btnSalvarConfig = findViewById(R.id.btnSalvarConfig);
-		spinnerOrdenacao = findViewById(R.id.spinnerOrdenacao);
-		spinnerPrioridadeMinima = findViewById(R.id.spinnerPrioridadeMinima);
+        spinnerOrdenacao = findViewById(R.id.spinnerOrdenacao);
+        spinnerPrioridadeMinima = findViewById(R.id.spinnerPrioridadeMinima);
 
-		// Popular spinners
-		configurarSpinnerOrdenacao();
-		configurarSpinnerPrioridadeMinima();
+        // Configura os Spinners com suas opções
+        configurarSpinnerOrdenacao();
+        configurarSpinnerPrioridadeMinima();
 
-        // Carregar estado salvo anteriormente
+        // Carrega valores salvos anteriormente (SharedPreferences)
         carregarPreferencias();
 
-        // Botão de salvar
+        // Define ação do botão Salvar
         btnSalvarConfig.setOnClickListener(v -> salvar());
     }
 
     // ================================
-    // Carregar os valores salvos no SharedPreferences
+    // Carrega os valores salvos no SharedPreferences
     // ================================
     private void carregarPreferencias() {
-        // Define se tarefas concluídas serão ocultadas
+
+        // Recupera e aplica estado do checkbox (ocultar tarefas concluídas)
         chkOcultarConcluidas.setChecked(prefs.getOcultarConcluidas());
 
-		// Ordenação: seleciona a posição conforme valor salvo (0..3)
-		int ordenacao = prefs.getOrdenacao();
-		if (ordenacao >= 0 && ordenacao <= 3) {
-			spinnerOrdenacao.setSelection(ordenacao);
-		} else {
-			spinnerOrdenacao.setSelection(0);
-		}
+        // ================================
+        // Spinner Ordenação
+        // ================================
+        // Recupera valor salvo de ordenação (0..3)
+        int ordenacao = prefs.getOrdenacao();
+        if (ordenacao >= 0 && ordenacao <= 3) {
+            spinnerOrdenacao.setSelection(ordenacao); // Define posição do spinner
+        } else {
+            spinnerOrdenacao.setSelection(0); // Padrão caso valor inválido
+        }
 
-		// Prioridade mínima: mapeia valor (0,2,3) para posições (0,1,2)
-		int prioridadeMinima = prefs.getPrioridadeMinima();
-		int posPrioridade = 0;
-		if (prioridadeMinima == 2) posPrioridade = 1;
-		if (prioridadeMinima == 3) posPrioridade = 2;
-		spinnerPrioridadeMinima.setSelection(posPrioridade);
+        // ================================
+        // Spinner Prioridade mínima
+        // ================================
+        // Recupera valor salvo da prioridade mínima
+        int prioridadeMinima = prefs.getPrioridadeMinima();
+        int posPrioridade = 0;
+
+        // Converte valor salvo (0,2,3) para posição do spinner (0,1,2)
+        if (prioridadeMinima == 2) posPrioridade = 1;
+        if (prioridadeMinima == 3) posPrioridade = 2;
+
+        // Aplica posição no spinner
+        spinnerPrioridadeMinima.setSelection(posPrioridade);
     }
 
     // ================================
@@ -94,58 +108,86 @@ public class ConfiguracoesActivity extends AppCompatActivity {
     // ================================
     private void salvar() {
 
-        // Salva valor da checkbox
+        // ================================
+        // Salva estado do checkbox
+        // ================================
         prefs.setOcultarConcluidas(chkOcultarConcluidas.isChecked());
 
-		// Salva ordenação (posição do spinner já é o valor 0..3)
-		int ordenacaoSel = spinnerOrdenacao.getSelectedItemPosition();
-		prefs.setOrdenacao(ordenacaoSel);
+        // ================================
+        // Salva ordenação
+        // ================================
+        int ordenacaoSel = spinnerOrdenacao.getSelectedItemPosition();
+        prefs.setOrdenacao(ordenacaoSel); // Valor 0..3 diretamente salvo
 
-		// Salva prioridade mínima: posições 0,1,2 → valores 0,2,3
-		int posPrioridade = spinnerPrioridadeMinima.getSelectedItemPosition();
-		int valorPrioridade = 0;
-		if (posPrioridade == 1) valorPrioridade = 2;
-		if (posPrioridade == 2) valorPrioridade = 3;
-		prefs.setPrioridadeMinima(valorPrioridade);
+        // ================================
+        // Salva prioridade mínima
+        // ================================
+        int posPrioridade = spinnerPrioridadeMinima.getSelectedItemPosition();
+        int valorPrioridade = 0;
+
+        // Converte posição do spinner (0,1,2) para valor real (0,2,3)
+        if (posPrioridade == 1) valorPrioridade = 2;
+        if (posPrioridade == 2) valorPrioridade = 3;
+
+        prefs.setPrioridadeMinima(valorPrioridade);
 
         // Feedback rápido ao usuário
         Toast.makeText(this, "Configurações salvas!", Toast.LENGTH_SHORT).show();
 
-        // Finaliza esta tela e retorna para a MainActivity
+        // Fecha esta Activity e retorna para a MainActivity
         finish();
     }
 
-	// ================================
-	// Adapters dos Spinners
-	// ================================
-	private void configurarSpinnerOrdenacao() {
-		String[] opcoes = new String[]{
-				"Ordem padrão (inserção)",
-				"Título (A–Z)",
-				"Data (mais antigas primeiro)",
-				"Prioridade (Alta → Baixa)"
-		};
-		ArrayAdapter<String> adaptador = new ArrayAdapter<>(
-				this,
-				android.R.layout.simple_spinner_item,
-				opcoes
-		);
-		adaptador.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		spinnerOrdenacao.setAdapter(adaptador);
-	}
+    // ================================
+    // Configuração do Spinner de Ordenação
+    // ================================
+    private void configurarSpinnerOrdenacao() {
 
-	private void configurarSpinnerPrioridadeMinima() {
-		String[] opcoes = new String[]{
-				"Mostrar todas as prioridades",
-				"Apenas Média e Alta",
-				"Apenas Alta"
-		};
-		ArrayAdapter<String> adaptador = new ArrayAdapter<>(
-				this,
-				android.R.layout.simple_spinner_item,
-				opcoes
-		);
-		adaptador.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		spinnerPrioridadeMinima.setAdapter(adaptador);
-	}
+        // Opções de ordenação disponíveis
+        String[] opcoes = new String[]{
+                "Ordem padrão (inserção)",          // Posição 0
+                "Título (A–Z)",                     // Posição 1
+                "Data (mais antigas primeiro)",     // Posição 2
+                "Prioridade (Alta → Baixa)"         // Posição 3
+        };
+
+        // Cria adapter para spinner
+        ArrayAdapter<String> adaptador = new ArrayAdapter<>(
+                this,
+                android.R.layout.simple_spinner_item,
+                opcoes
+        );
+
+        // Layout para dropdown
+        adaptador.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // Associa adapter ao spinner
+        spinnerOrdenacao.setAdapter(adaptador);
+    }
+
+    // ================================
+    // Configuração do Spinner de Prioridade mínima
+    // ================================
+    private void configurarSpinnerPrioridadeMinima() {
+
+        // Opções disponíveis
+        String[] opcoes = new String[]{
+                "Mostrar todas as prioridades",    // Posição 0
+                "Apenas Média e Alta",             // Posição 1
+                "Apenas Alta"                      // Posição 2
+        };
+
+        // Cria adapter para spinner
+        ArrayAdapter<String> adaptador = new ArrayAdapter<>(
+                this,
+                android.R.layout.simple_spinner_item,
+                opcoes
+        );
+
+        // Layout para dropdown
+        adaptador.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // Associa adapter ao spinner
+        spinnerPrioridadeMinima.setAdapter(adaptador);
+    }
 }
