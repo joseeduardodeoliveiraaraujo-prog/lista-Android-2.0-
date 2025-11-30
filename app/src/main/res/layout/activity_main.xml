@@ -4,7 +4,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F9F9F9">
+    android:background="#F0F4F7">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
@@ -13,94 +13,109 @@
         android:background="#FFFFFF"
         android:elevation="4dp"
         app:title="Minhas Tarefas"
-        app:titleTextColor="#333333" />
+        app:titleTextColor="#212121" />
 
-	<!-- Card/resumo com contadores (total, concluídas, pendentes) -->
-	<LinearLayout
-		android:id="@+id/cardResumo"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:layout_below="@id/toolbar"
-		android:orientation="horizontal"
-		android:background="#FFFFFF"
-		android:padding="12dp"
-		android:layout_marginHorizontal="10dp"
-		android:layout_marginTop="10dp"
-		android:elevation="2dp">
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardResumo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="2dp"
+        app:cardBackgroundColor="@android:color/white"
+        app:contentPadding="16dp">
 
-		<LinearLayout
-			android:layout_width="0dp"
-			android:layout_height="wrap_content"
-			android:layout_weight="1"
-			android:orientation="vertical">
-			<TextView
-				android:id="@+id/txtTotal"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:text="Total: 0"
-				android:textStyle="bold"
-				android:textColor="#333333"
-				android:textSize="16sp"/>
-			<TextView
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:text="Tarefas cadastradas"
-				android:textColor="#777777"
-				android:textSize="12sp"/>
-		</LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="3">
 
-		<LinearLayout
-			android:layout_width="0dp"
-			android:layout_height="wrap_content"
-			android:layout_weight="1"
-			android:orientation="vertical">
-			<TextView
-				android:id="@+id/txtConcluidas"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:text="Concluídas: 0"
-				android:textStyle="bold"
-				android:textColor="#2E7D32"
-				android:textSize="16sp"/>
-			<TextView
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:text="Finalizadas"
-				android:textColor="#777777"
-				android:textSize="12sp"/>
-		</LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center_horizontal">
+                <TextView
+                    android:id="@+id/txtTotal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="4"
+                    android:textStyle="bold"
+                    android:textColor="#212121"
+                    android:textSize="24sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TOTAL"
+                    android:textAllCaps="true"
+                    android:textColor="#757575"
+                    android:textSize="10sp" />
+            </LinearLayout>
 
-		<LinearLayout
-			android:layout_width="0dp"
-			android:layout_height="wrap_content"
-			android:layout_weight="1"
-			android:orientation="vertical">
-			<TextView
-				android:id="@+id/txtPendentes"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:text="Pendentes: 0"
-				android:textStyle="bold"
-				android:textColor="#C62828"
-				android:textSize="16sp"/>
-			<TextView
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:text="A fazer"
-				android:textColor="#777777"
-				android:textSize="12sp"/>
-		</LinearLayout>
-	</LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center_horizontal">
+                <TextView
+                    android:id="@+id/txtConcluidas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textStyle="bold"
+                    android:textColor="#28A745"
+                    android:textSize="24sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CONCLUÍDAS"
+                    android:textAllCaps="true"
+                    android:textColor="#757575"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center_horizontal">
+                <TextView
+                    android:id="@+id/txtPendentes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="4"
+                    android:textStyle="bold"
+                    android:textColor="#DC3545"
+                    android:textSize="24sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PENDENTES"
+                    android:textAllCaps="true"
+                    android:textColor="#DC3545"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 
     <ListView
         android:id="@+id/listViewTarefas"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-		android:layout_below="@id/cardResumo"
-		android:layout_marginTop="8dp"
+        android:layout_below="@id/cardResumo"
+        android:layout_marginTop="16dp"
         android:divider="@android:color/transparent"
-        android:dividerHeight="10dp"
-        android:paddingBottom="80dp" />
+        android:dividerHeight="12dp"
+        android:paddingHorizontal="16dp"
+        android:clipToPadding="false"
+        android:paddingBottom="100dp" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabAdicionar"
@@ -108,9 +123,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_margin="20dp"
+        android:layout_margin="24dp"
         android:contentDescription="Adicionar tarefa"
-        app:backgroundTint="#4CAF50"
+        app:backgroundTint="#007BFF"
+        app:tint="@android:color/white"
         app:srcCompat="@android:drawable/ic_input_add" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -119,13 +135,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_margin="20dp"
+        android:layout_margin="24dp"
         android:contentDescription="Excluir tarefas concluídas"
-        app:backgroundTint="#C62828"
+        app:backgroundTint="#6C757D"
         app:srcCompat="@drawable/ic_lixeira"
         app:tint="@android:color/white"
         app:fabSize="normal" />
-
-
 
 </RelativeLayout>

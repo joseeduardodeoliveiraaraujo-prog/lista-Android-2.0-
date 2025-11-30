@@ -1,79 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
-    android:padding="20dp">
+    android:background="#F0F4F7"
+    android:fitsSystemWindows="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="20dp">
 
-        <!-- Título -->
         <TextView
             android:id="@+id/txtTituloConfig"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Configurações"
-            android:textSize="24sp"
+            android:textSize="28sp"
             android:textStyle="bold"
-            android:textColor="#333333"
-            android:layout_marginBottom="20dp" />
+            android:textColor="#212121"
+            android:layout_marginBottom="32dp" />
 
-		<!-- Ordenação -->
-		<TextView
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:text="Ordenação da lista"
-			android:textSize="16sp"
-			android:textStyle="bold"
-			android:textColor="#333333"
-			android:layout_marginTop="4dp"
-			android:layout_marginBottom="6dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ordenação da lista"
+            android:textSize="14sp"
+            android:textColor="#757575"
+            android:layout_marginBottom="4dp" />
 
-		<Spinner
-			android:id="@+id/spinnerOrdenacao"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content" />
+        <Spinner
+            android:id="@+id/spinnerOrdenacao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp" />
 
-		<!-- Filtro por prioridade mínima -->
-		<TextView
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:text="Prioridade mínima"
-			android:textSize="16sp"
-			android:textStyle="bold"
-			android:textColor="#333333"
-			android:layout_marginTop="16dp"
-			android:layout_marginBottom="6dp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#E0E0E0"
+            android:layout_marginTop="16dp" />
 
-		<Spinner
-			android:id="@+id/spinnerPrioridadeMinima"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Prioridade mínima a exibir"
+            android:textSize="14sp"
+            android:textColor="#757575"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="4dp" />
 
-        <!-- Ocultar concluídas -->
-        <CheckBox
+        <Spinner
+            android:id="@+id/spinnerPrioridadeMinima"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#E0E0E0"
+            android:layout_marginTop="16dp" />
+
+        <com.google.android.material.checkbox.MaterialCheckBox
             android:id="@+id/chkOcultarConcluidas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Ocultar tarefas concluídas"
-            android:textSize="18sp"
-            android:textColor="#333333" />
+            android:textSize="16sp"
+            android:textColor="#333333"
+            android:layout_marginTop="24dp" />
 
-        <!-- Botão salvar -->
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSalvarConfig"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Salvar"
             android:textSize="18sp"
-            android:textStyle="bold"
-            android:background="#4CAF50"
-            android:textColor="#FFFFFF"
-            android:padding="14dp"
-            android:layout_marginTop="35dp" />
+            android:paddingVertical="16dp"
+            android:layout_marginTop="50dp"
+            app:cornerRadius="8dp"
+            app:backgroundTint="#007BFF" />
 
     </LinearLayout>
 

@@ -1,76 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
-    android:id="@+id/activity_form_tarefa"
-    android:padding="20dp">
+    android:background="#F0F4F7"
+    android:id="@+id/activity_form_tarefa">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="16dp">
 
-        <!-- Título da tela -->
         <TextView
             android:id="@+id/txtTituloForm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Nova Tarefa"
-            android:textSize="24sp"
+            android:textSize="28sp"
             android:textStyle="bold"
-            android:textColor="#333333"
-            android:layout_marginBottom="20dp" />
+            android:textColor="#212121"
+            android:layout_marginBottom="24dp" />
 
-        <!-- Campo Título -->
-        <EditText
-            android:id="@+id/edtTitulo"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Título da tarefa"
-            android:textColor="#000"
-            android:textColorHint="#888"
-            android:background="@android:drawable/edit_text"
-            android:padding="12dp"
-            android:textSize="18sp" />
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:hint="Título da tarefa">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtTitulo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textCapSentences"
+                android:maxLength="100" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Campo Descrição -->
-        <EditText
-            android:id="@+id/edtDescricao"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:hint="Descrição (opcional)"
-            android:textColor="#000"
-            android:textColorHint="#888"
-            android:background="@android:drawable/edit_text"
-            android:padding="12dp"
-            android:layout_marginTop="15dp"
-            android:minLines="3"
-            android:gravity="top"
-            android:textSize="16sp" />
+            android:layout_marginTop="16dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtDescricao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minLines="3"
+                android:gravity="top"
+                android:inputType="textMultiLine|textCapSentences" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Campo Data -->
-        <EditText
-            android:id="@+id/edtData"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:hint="Data (ex: 12/12/2025)"
-            android:textColor="#000"
-            android:textColorHint="#888"
-            android:background="@android:drawable/edit_text"
-            android:padding="12dp"
-            android:layout_marginTop="15dp"
-            android:textSize="16sp" />
+            android:layout_marginTop="16dp"
+            app:startIconDrawable="@android:drawable/ic_menu_today">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtData"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="date"
+                android:maxLength="10" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Prioridade -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Prioridade da Tarefa"
+            android:textColor="#333333"
+            android:textSize="14sp" />
         <Spinner
             android:id="@+id/spinnerPrioridade"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp" />
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp" />
 
-        <!-- Concluída (só leitura visual por enquanto) -->
-        <CheckBox
+        <com.google.android.material.checkbox.MaterialCheckBox
             android:id="@+id/chkConcluidaForm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -78,20 +87,16 @@
             android:textColor="#333333"
             android:layout_marginTop="20dp" />
 
-        <!-- Botão Salvar -->
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSalvar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Salvar"
             android:textSize="18sp"
-            android:textStyle="bold"
-            android:background="#4CAF50"
-            android:textColor="#FFF"
-            android:padding="16dp"
-            android:layout_marginTop="30dp"
-            android:gravity="center" />
+            android:paddingVertical="16dp"
+            android:layout_marginTop="40dp"
+            app:cornerRadius="8dp"
+            app:backgroundTint="#007BFF"  />
 
     </LinearLayout>
-
 </ScrollView>

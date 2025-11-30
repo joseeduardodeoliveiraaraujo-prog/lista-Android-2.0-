@@ -198,9 +198,10 @@ public class MainActivity extends AppCompatActivity {
 
         int pendentes = Math.max(0, total - concluidas); // calcula tarefas pendentes
 
-        txtTotal.setText("Total: " + total);
-        txtConcluidas.setText("Concluídas: " + concluidas);
-        txtPendentes.setText("Pendentes: " + pendentes);
+        // CORREÇÃO: Define APENAS O NÚMERO nas TextViews
+        txtTotal.setText(String.valueOf(total));
+        txtConcluidas.setText(String.valueOf(concluidas));
+        txtPendentes.setText(String.valueOf(pendentes));
     }
 
     // ================================

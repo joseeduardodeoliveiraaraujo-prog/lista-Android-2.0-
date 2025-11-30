@@ -102,6 +102,7 @@ public class TarefaAdapter extends ArrayAdapter<Tarefa> {
         TextView txtData;
         CheckBox chkConcluida;
         ImageView imgAtrasada;
+
     }
 
     // ================================
@@ -259,16 +260,16 @@ public class TarefaAdapter extends ArrayAdapter<Tarefa> {
     private void aplicarCorPrioridade(ViewHolder holder, int prioridade) {
         switch (prioridade) {
             case 1: // baixa
-                holder.txtTitulo.setTextColor(Color.parseColor("#2E7D32"));
-                holder.txtData.setTextColor(Color.parseColor("#2E7D32"));
+                holder.txtTitulo.setTextColor(Color.parseColor("#4CAF50"));
+                holder.txtData.setTextColor(Color.parseColor("#4CAF50"));
                 break;
             case 2: // média
-                holder.txtTitulo.setTextColor(Color.parseColor("#F9A825"));
-                holder.txtData.setTextColor(Color.parseColor("#F9A825"));
+                holder.txtTitulo.setTextColor(Color.parseColor("#FFC107"));
+                holder.txtData.setTextColor(Color.parseColor("#FFC107"));
                 break;
             case 3: // alta
-                holder.txtTitulo.setTextColor(Color.parseColor("#C62828"));
-                holder.txtData.setTextColor(Color.parseColor("#C62828"));
+                holder.txtTitulo.setTextColor(Color.parseColor("#E53935"));
+                holder.txtData.setTextColor(Color.parseColor("#E53935"));
                 break;
             default: // padrão
                 holder.txtTitulo.setTextColor(Color.BLACK);
