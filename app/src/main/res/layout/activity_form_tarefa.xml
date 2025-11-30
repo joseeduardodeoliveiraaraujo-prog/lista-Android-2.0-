@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:id="@+id/activity_form_tarefa"
+    android:padding="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Título da tela -->
+        <TextView
+            android:id="@+id/txtTituloForm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nova Tarefa"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#333333"
+            android:layout_marginBottom="20dp" />
+
+        <!-- Campo Título -->
+        <EditText
+            android:id="@+id/edtTitulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Título da tarefa"
+            android:textColor="#000"
+            android:textColorHint="#888"
+            android:background="@android:drawable/edit_text"
+            android:padding="12dp"
+            android:textSize="18sp" />
+
+        <!-- Campo Descrição -->
+        <EditText
+            android:id="@+id/edtDescricao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Descrição (opcional)"
+            android:textColor="#000"
+            android:textColorHint="#888"
+            android:background="@android:drawable/edit_text"
+            android:padding="12dp"
+            android:layout_marginTop="15dp"
+            android:minLines="3"
+            android:gravity="top"
+            android:textSize="16sp" />
+
+        <!-- Campo Data -->
+        <EditText
+            android:id="@+id/edtData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Data (ex: 12/12/2025)"
+            android:textColor="#000"
+            android:textColorHint="#888"
+            android:background="@android:drawable/edit_text"
+            android:padding="12dp"
+            android:layout_marginTop="15dp"
+            android:textSize="16sp" />
+
+        <!-- Prioridade -->
+        <Spinner
+            android:id="@+id/spinnerPrioridade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp" />
+
+        <!-- Concluída (só leitura visual por enquanto) -->
+        <CheckBox
+            android:id="@+id/chkConcluidaForm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tarefa concluída"
+            android:textColor="#333333"
+            android:layout_marginTop="20dp" />
+
+        <!-- Botão Salvar -->
+        <Button
+            android:id="@+id/btnSalvar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Salvar"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:background="#4CAF50"
+            android:textColor="#FFF"
+            android:padding="16dp"
+            android:layout_marginTop="30dp"
+            android:gravity="center" />
+
+    </LinearLayout>
+
+</ScrollView>
