@@ -35,21 +35,20 @@ Esse projeto é um aplicativo Android para gerenciar tarefas (to-do list), permi
 
 ## 📁 Estrutura de Diretórios 
 
-app/src/main/java/com/example/projeto2
+📁 Estrutura de Diretórios
 
-├── model/          → classe Tarefa
+/app/src/main/java/com/example/projeto2
 
-├── database/       → DBHelper (banco), TarefaDAO (CRUD)
+├── model/ → classe Tarefa
 
-├── ui/             → Activities:
+├── database/ → DBHelper (banco) e TarefaDAO (CRUD)
 
-│   ├── MainActivity
+├── adapter/ → TarefaAdapter (ListView personalizado)
 
-│   ├── FormTarefaActivity
+├── ui/ → Activities de interface: FormTarefaActivity e ConfiguracoesActivity
 
-│   └── ConfiguracoesActivity
+└── utils/ → MainActivity (tela principal do aplicativo)
 
-└── adapter/        → TarefaAdapter (ListView personalizado)
 
 
 
